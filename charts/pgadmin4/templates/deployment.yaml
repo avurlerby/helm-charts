@@ -4,7 +4,8 @@ kind: Deployment
 metadata:
   name: {{ $fullName }}
   labels:
-    {{- include "pgadmin.labels" . | nindent 4 }}
+    app.kubernetes.io/name: {{ include "pgadmin.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
 {{- if .Values.annotations }}
   annotations:
   {{- if .Values.annotations }}

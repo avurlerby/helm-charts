@@ -3,7 +3,8 @@ kind: Pod
 metadata:
   name: "{{ include "pgadmin.fullname" . }}-test-connection"
   labels:
-{{ include "pgadmin.labels" . | indent 4 }}
+    app.kubernetes.io/name: {{ include "pgadmin.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }
   annotations:
     "helm.sh/hook": test-success
 spec:
